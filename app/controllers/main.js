@@ -5,7 +5,6 @@ function getEle(id) {
 }
 getListTeacher();
 let dsGv = [];
-console.log(dsGv.length);
 function getInfoTeacher() {
   let taiKhoan = getEle("TaiKhoan").value;
   let matKhau = getEle("MatKhau").value;
@@ -33,8 +32,12 @@ function getInfoTeacher() {
   isValid &=
     validation.kiemTraRong(email, "errEmail", "Khoong duoc de trong") &&
     validation.kiemTraEmail(email, "errEmail", "Email khong hop le");
-  isValid &= validation.kiemTraRong(loaiND, "errNd", "Khoong duoc de trong");
-  isValid &= validation.kiemTraRong(ngonNgu, "errNn", "Khoong duoc de trong");
+  isValid &= validation.kiemTraRong(
+    loaiND,
+    "errNd",
+    "Vui long chon loai nguoi dung"
+  );
+  isValid &= validation.kiemTraRong(ngonNgu, "errNn", "Vui long chon ngon ngu");
   isValid &=
     validation.kiemTraRong(moTa, "errMt", "Khoong duoc de trong") &&
     validation.kiemTraDoDaiKiTu(
@@ -119,7 +122,6 @@ function renderListTeacher(data) {
   getEle("tblDanhSachNguoiDung").innerHTML = content;
   return dsGv;
 }
-console.log(dsGv);
 
 // Xoa nguoi dung
 function deleteUser(id) {
@@ -146,8 +148,6 @@ getEle("btnThemNguoiDung").addEventListener("click", () => {
   getEle("MatKhau").value = "";
   getEle("HoTen").value = "";
   getEle("Email").value = "";
-  getEle("loaiNguoiDung").value = "";
-  getEle("loaiNgonNgu").value = "";
   getEle("MoTa").value = "";
   getEle("img").src = "";
   footer.innerHTML = `<button class="btn btn-success" onclick="addUser()" data-dismiss="modal">Thêm</button>`;
